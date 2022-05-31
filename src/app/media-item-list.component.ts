@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { MediaItemService } from './media-item.service';
+import { Component, OnInit } from "@angular/core";
+import { MediaItemService } from "./media-item.service";
 
 @Component({
-  selector: 'mw-media-item-list',
-  templateUrl: './media-item-list.component.html',
-  styleUrls: ['./media-item-list.component.css']
+  selector: "mw-media-item-list",
+  templateUrl: "./media-item-list.component.html",
+  styleUrls: ["./media-item-list.component.css"],
 })
 export class MediaItemListComponent implements OnInit {
   mediaItems;
@@ -12,7 +12,10 @@ export class MediaItemListComponent implements OnInit {
   constructor(private mediaItemService: MediaItemService) {}
 
   ngOnInit() {
-    this.mediaItems = this.mediaItemService.get();
+    //Trường hợp này sử dụng next observable execution
+    this.mediaItemService.get().subscribe((mediaItems) => {
+      this.mediaItems = mediaItems;
+    });
   }
 
   onMediaItemDelete(mediaItem) {
