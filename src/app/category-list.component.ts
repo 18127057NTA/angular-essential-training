@@ -9,6 +9,17 @@ import { Component, Input } from '@angular/core';
   `,
   styles: [
     `
+      :host{
+        display: block; /*bất kì element trong selector sẽ có display dạng block*/
+        margin-bottom: 20px;
+      }
+      :host-context(.medium-movies) span /*Viết dưới dạng function form */{
+        background-color: #53ace4;
+
+      }
+      :host-context(.medium-series) span {
+        background-color: #45bf94;
+      }
       .label {
         background-color: #999999;
         color: #ffffff;
